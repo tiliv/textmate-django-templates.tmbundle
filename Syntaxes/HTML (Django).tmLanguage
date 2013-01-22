@@ -477,7 +477,7 @@
 								<array>
 									<dict>
 										<key>match</key>
-										<string>(request|perms|view|object|object_list)</string>
+										<string>(request|perms|view|object|object_list|STATIC_URL|MEDIA_URL)</string>
 										<key>name</key>
 										<string>support.variable.django.template</string>
 									</dict>

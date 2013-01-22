@@ -171,7 +171,7 @@
 			</dict>
 			<dict>
 				<key>begin</key>
-				<string>({%) ([a-zA-Z][\w]*)(.*?) (%})</string>
+				<string>({%) ([a-zA-Z]\w*)(?: (.*?)|()) (%})</string>
 				<key>beginCaptures</key>
 				<dict>
 					<key>1</key>
@@ -216,7 +216,7 @@
 					</dict>
 				</dict>
 				<key>end</key>
-				<string>({%) ((end\2))(.*?) (%})</string>
+				<string>({%) (end\2)(.*?) (%})</string>
 				<key>endCaptures</key>
 				<dict>
 					<key>1</key>
@@ -228,9 +228,6 @@
 					<dict>
 						<key>name</key>
 						<string>entity.tag.name</string>
-					</dict>
-					<key>3</key>
-					<dict>
 						<key>patterns</key>
 						<array>
 							<dict>
@@ -239,14 +236,14 @@
 							</dict>
 						</array>
 					</dict>
-					<key>5</key>
+					<key>4</key>
 					<dict>
 						<key>name</key>
 						<string>keyword.operator.django.template.tag</string>
 					</dict>
 				</dict>
 				<key>name</key>
-				<string>meta.scope.django.template.tag.block</string>
+				<string>meta.scope.django.template.tag.block.$2.$3</string>
 				<key>patterns</key>
 				<array>
 					<dict>

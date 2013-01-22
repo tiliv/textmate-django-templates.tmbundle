@@ -394,7 +394,7 @@
 						<key>match</key>
 						<string>\b(reversed|only|with|by|as)\b</string>
 						<key>name</key>
-						<string>keyword.operator.other.django.template</string>
+						<string>keyword.other.django.template</string>
 					</dict>
 					<dict>
 						<key>match</key>

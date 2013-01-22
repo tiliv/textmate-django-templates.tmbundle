@@ -197,7 +197,15 @@
 						<array>
 							<dict>
 								<key>include</key>
+								<string>#tag_keywords</string>
+							</dict>
+							<dict>
+								<key>include</key>
 								<string>#tag_parameters</string>
+							</dict>
+							<dict>
+								<key>include</key>
+								<string>#variable_reference</string>
 							</dict>
 						</array>
 					</dict>
@@ -420,6 +428,30 @@
 					</dict>
 				</array>
 			</dict>
+			<key>tag_keywords</key>
+			<dict>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>match</key>
+						<string>\b(and|or|not|in|is)\b</string>
+						<key>name</key>
+						<string>keyword.operator.logical.django.template</string>
+					</dict>
+					<dict>
+						<key>match</key>
+						<string>\b(reversed|only|with|by|as)\b</string>
+						<key>name</key>
+						<string>keyword.operator.other.django.template</string>
+					</dict>
+					<dict>
+						<key>match</key>
+						<string>\b(from)\b</string>
+						<key>name</key>
+						<string>keyword.control.django.template</string>
+					</dict>
+				</array>
+			</dict>
 			<key>tag_names</key>
 			<dict>
 				<key>patterns</key>
@@ -446,17 +478,36 @@
 			</dict>
 			<key>tag_parameters</key>
 			<dict>
+				<key>name</key>
+				<string>meta.function-call.arguments.django.template</string>
 				<key>patterns</key>
 				<array>
 					<dict>
+						<key>captures</key>
+						<dict>
+							<key>1</key>
+							<dict>
+								<key>name</key>
+								<string>variable.parameter.function.django.template</string>
+							</dict>
+							<key>2</key>
+							<dict>
+								<key>name</key>
+								<string>keyword.operator.assignment.django.template</string>
+							</dict>
+							<key>3</key>
+							<dict>
+								<key>patterns</key>
+								<array>
+									<dict>
+										<key>include</key>
+										<string>#variable_reference</string>
+									</dict>
+								</array>
+							</dict>
+						</dict>
 						<key>match</key>
-						<string>\b(and|or|not|in|by|as|from|reversed|only|with)\b</string>
-						<key>name</key>
-						<string>keyword.operator.django.template</string>
-					</dict>
-					<dict>
-						<key>include</key>
-						<string>#variable_reference</string>
+						<string>([a-zA-Z]\w*)(=)(.+?)(?=( [a-zA-Z]\w*\=?|$))</string>
 					</dict>
 				</array>
 			</dict>
@@ -466,6 +517,14 @@
 				<string>Checks for all occurrences of "varname|filter|filter"</string>
 				<key>patterns</key>
 				<array>
+					<dict>
+						<key>comment</key>
+						<string>this comes first in the patterns list to avoid ambiguity with context variable names</string>
+						<key>match</key>
+						<string>(True|False|None)</string>
+						<key>name</key>
+						<string>constant.constant.language.python</string>
+					</dict>
 					<dict>
 						<key>captures</key>
 						<dict>
@@ -504,12 +563,6 @@
 						<string>([1-9]+[0-9]*|0)</string>
 						<key>name</key>
 						<string>constant.numeric.integer.decimal.python</string>
-					</dict>
-					<dict>
-						<key>match</key>
-						<string>(True|False|None)</string>
-						<key>name</key>
-						<string>constant.constant.language.python</string>
 					</dict>
 					<dict>
 						<key>include</key>

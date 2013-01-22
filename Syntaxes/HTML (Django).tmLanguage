@@ -261,7 +261,7 @@
 				<array>
 					<dict>
 						<key>match</key>
-						<string>(?&lt;=\.)(keys|items)</string>
+						<string>(?&lt;=\.)(keys|items|count|all)</string>
 						<key>name</key>
 						<string>support.function.python</string>
 					</dict>

@@ -524,7 +524,7 @@
 				<array>
 					<dict>
 						<key>match</key>
-						<string>\b((end)?(verbatim|autoescape|block|blocktrans|filter|spaceless|templatetag|with))|(plural|debug|widthratio|firstof|now|regroup|csrf_token)\b</string>
+						<string>\b((end)?(verbatim|autoescape|block|blocktrans|filter|spaceless|templatetag|with))|(url|plural|debug|widthratio|firstof|now|regroup|csrf_token)\b</string>
 						<key>name</key>
 						<string>support.other.django.template.tag.builtin</string>
 					</dict>

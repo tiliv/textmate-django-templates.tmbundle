@@ -4,6 +4,8 @@
 <dict>
 	<key>changed</key>
 	<dict>
+		<key>injectionSelector</key>
+		<string>text.html.django string.quoted</string>
 		<key>patterns</key>
 		<array>
 			<dict>

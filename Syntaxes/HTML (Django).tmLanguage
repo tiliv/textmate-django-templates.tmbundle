@@ -173,8 +173,49 @@
 			</dict>
 			<dict>
 				<key>begin</key>
-				<string>({%) ([a-zA-Z]\w*) ?(.*?) (%})</string>
+				<string>({%) (block) ([\w-]+) (%})</string>
 				<key>beginCaptures</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>name</key>
+						<string>meta.scope.django.template.tag.$2.$3</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.operator.django.template.tag</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>storage.type</string>
+						<key>patterns</key>
+						<array>
+							<dict>
+								<key>include</key>
+								<string>#tag_names</string>
+							</dict>
+						</array>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.tag</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.operator.django.template.tag</string>
+					</dict>
+				</dict>
+				<key>comment</key>
+				<string>Block tags</string>
+				<key>contentName</key>
+				<string>meta.scope.django.template.$2-body.$3</string>
+				<key>end</key>
+				<string>({%) (endblock) (\3) (%})</string>
+				<key>endCaptures</key>
 				<dict>
 					<key>1</key>
 					<dict>
@@ -184,7 +225,51 @@
 					<key>2</key>
 					<dict>
 						<key>name</key>
-						<string>entity.tag.name</string>
+						<string>storage.type</string>
+						<key>patterns</key>
+						<array>
+							<dict>
+								<key>include</key>
+								<string>#tag_names</string>
+							</dict>
+						</array>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.tag</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.operator.django.template.tag</string>
+					</dict>
+				</dict>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>include</key>
+						<string>text.html.django</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>beginCaptures</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>name</key>
+						<string>meta.scope.django.template.tag.$2</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.operator.django.template.tag</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>storage.type</string>
 						<key>patterns</key>
 						<array>
 							<dict>
@@ -205,10 +290,6 @@
 								<key>include</key>
 								<string>#value_reference</string>
 							</dict>
-							<dict>
-								<key>include</key>
-								<string>#tag_parameters</string>
-							</dict>
 						</array>
 					</dict>
 					<key>4</key>
@@ -217,8 +298,12 @@
 						<string>keyword.operator.django.template.tag</string>
 					</dict>
 				</dict>
+				<key>comment</key>
+				<string>Block-like tags without names</string>
+				<key>contentName</key>
+				<string>meta.scope.django.template.$2-body</string>
 				<key>end</key>
-				<string>({%) (end\2)(.*?) (%})</string>
+				<string>({%) (end\2) (%})</string>
 				<key>endCaptures</key>
 				<dict>
 					<key>1</key>
@@ -229,7 +314,7 @@
 					<key>2</key>
 					<dict>
 						<key>name</key>
-						<string>entity.tag.name</string>
+						<string>storage.type</string>
 						<key>patterns</key>
 						<array>
 							<dict>
@@ -238,19 +323,73 @@
 							</dict>
 						</array>
 					</dict>
-					<key>4</key>
+					<key>3</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.operator.django.template.tag</string>
+					</dict>
+				</dict>
+				<key>match</key>
+				<string>({%) ([a-zA-Z]\w*)(.*?) (%})</string>
+				<key>patterns</key>
+				<array>
+					<dict>
+						<key>include</key>
+						<string>text.html.django</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>begin</key>
+				<string>({%) (\w+)\b</string>
+				<key>beginCaptures</key>
+				<dict>
+					<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>keyword.operator.django.template.tag</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>storage.type</string>
+						<key>patterns</key>
+						<array>
+							<dict>
+								<key>include</key>
+								<string>#tag_names</string>
+							</dict>
+						</array>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.tag</string>
+					</dict>
+				</dict>
+				<key>comment</key>
+				<string>Non-block tags</string>
+				<key>end</key>
+				<string>%}</string>
+				<key>endCaptures</key>
+				<dict>
+					<key>0</key>
 					<dict>
 						<key>name</key>
 						<string>keyword.operator.django.template.tag</string>
 					</dict>
 				</dict>
 				<key>name</key>
-				<string>meta.scope.django.template.tag.block.$2.$3</string>
+				<string>meta.scope.django.template.tag.$2</string>
 				<key>patterns</key>
 				<array>
 					<dict>
 						<key>include</key>
-						<string>text.html.django</string>
+						<string>#tag_keywords</string>
+					</dict>
+					<dict>
+						<key>include</key>
+						<string>#value_reference</string>
 					</dict>
 				</array>
 			</dict>

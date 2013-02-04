@@ -5,7 +5,7 @@
 	<key>changed</key>
 	<dict>
 		<key>injectionSelector</key>
-		<string>text.html.django string.quoted</string>
+		<string>text.html.django string.quoted, text.html.django meta.tag.block.*.html, text.html.django source.js.embedded</string>
 		<key>patterns</key>
 		<array>
 			<dict>

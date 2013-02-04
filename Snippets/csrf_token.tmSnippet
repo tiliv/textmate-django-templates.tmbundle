@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>{% csrf_token %}
+$1</string>
+	<key>name</key>
+	<string>csrf_token</string>
+	<key>scope</key>
+	<string>text.html.django</string>
+	<key>tabTrigger</key>
+	<string>csrf</string>
+	<key>uuid</key>
+	<string>4934D131-E49F-4F42-9A0A-3D07F52D2AFC</string>
+</dict>
+</plist>

@@ -133,22 +133,6 @@
 				<string>comment.line.django.template</string>
 			</dict>
 			<dict>
-				<key>comment</key>
-				<string>Nag about bad spacing</string>
-				<key>match</key>
-				<string>{{(\S|\s{2,}).*}}|{{.*(\S|\s{2,})}}</string>
-				<key>name</key>
-				<string>invalid.deprecated.spacing</string>
-			</dict>
-			<dict>
-				<key>comment</key>
-				<string>Nag about bad spacing</string>
-				<key>match</key>
-				<string>{%(\S|\s{2,}).*%}|{%.*(\S|\s{2,})%}</string>
-				<key>name</key>
-				<string>invalid.deprecated.spacing</string>
-			</dict>
-			<dict>
 				<key>begin</key>
 				<string>{{</string>
 				<key>captures</key>
@@ -166,10 +150,70 @@
 				<key>patterns</key>
 				<array>
 					<dict>
+						<key>begin</key>
+						<string>(?&lt;={{)\S</string>
+						<key>comment</key>
+						<string>Nag about bad spacing</string>
+						<key>end</key>
+						<string>(?=}})</string>
+						<key>name</key>
+						<string>invalid.illegal.spacing</string>
+					</dict>
+					<dict>
+						<key>comment</key>
+						<string>Nag about bad spacing</string>
+						<key>match</key>
+						<string>(?&lt;={{).*?\S(?=}})</string>
+						<key>name</key>
+						<string>invalid.illegal.spacing</string>
+					</dict>
+					<dict>
+						<key>captures</key>
+						<dict>
+							<key>1</key>
+							<dict>
+								<key>name</key>
+								<string>invalid.illegal.spacing</string>
+							</dict>
+						</dict>
+						<key>comment</key>
+						<string>Nag about bad spacing</string>
+						<key>match</key>
+						<string>(?&lt;={{)(\s{2,})</string>
+					</dict>
+					<dict>
+						<key>captures</key>
+						<dict>
+							<key>1</key>
+							<dict>
+								<key>name</key>
+								<string>invalid.illegal.spacing</string>
+							</dict>
+						</dict>
+						<key>comment</key>
+						<string>Nag about bad spacing</string>
+						<key>match</key>
+						<string>(\s{2,})(?=}})</string>
+					</dict>
+					<dict>
 						<key>include</key>
 						<string>#value_reference</string>
 					</dict>
 				</array>
+			</dict>
+			<dict>
+				<key>begin</key>
+				<string>({%)\S</string>
+				<key>end</key>
+				<string>(%})</string>
+				<key>name</key>
+				<string>invalid.illegal.spacing</string>
+			</dict>
+			<dict>
+				<key>match</key>
+				<string>({%).*?\S(%})</string>
+				<key>name</key>
+				<string>invalid.illegal.spacing</string>
 			</dict>
 			<dict>
 				<key>begin</key>
@@ -255,7 +299,7 @@
 			</dict>
 			<dict>
 				<key>begin</key>
-				<string>({%) (\w+)\b</string>
+				<string>({%)(\s+)(\w+)\b</string>
 				<key>beginCaptures</key>
 				<dict>
 					<key>1</key>
@@ -264,6 +308,18 @@
 						<string>keyword.operator.django.template.tag</string>
 					</dict>
 					<key>2</key>
+					<dict>
+						<key>patterns</key>
+						<array>
+							<dict>
+								<key>match</key>
+								<string>(?&lt;={%)(\s{2,})</string>
+								<key>name</key>
+								<string>invalid.illegal.spacing</string>
+							</dict>
+						</array>
+					</dict>
+					<key>3</key>
 					<dict>
 						<key>name</key>
 						<string>storage.type</string>
@@ -274,11 +330,6 @@
 								<string>#tag_names</string>
 							</dict>
 						</array>
-					</dict>
-					<key>3</key>
-					<dict>
-						<key>name</key>
-						<string>entity.name.tag</string>
 					</dict>
 				</dict>
 				<key>comment</key>
@@ -297,6 +348,12 @@
 				<string>meta.scope.django.template.tag.$2</string>
 				<key>patterns</key>
 				<array>
+					<dict>
+						<key>match</key>
+						<string>(\s{2,})(?=%})</string>
+						<key>name</key>
+						<string>invalid.illegal.spacing</string>
+					</dict>
 					<dict>
 						<key>include</key>
 						<string>#tag_keywords</string>

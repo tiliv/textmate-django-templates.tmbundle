@@ -214,7 +214,7 @@
 				<key>contentName</key>
 				<string>meta.scope.django.template.$2-body.$3</string>
 				<key>end</key>
-				<string>({%) (endblock) (\3) (%})</string>
+				<string>({%) (endblock)(| \3) (%})</string>
 				<key>endCaptures</key>
 				<dict>
 					<key>1</key>

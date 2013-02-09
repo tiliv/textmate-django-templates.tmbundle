@@ -96,7 +96,7 @@
 				<array>
 					<dict>
 						<key>include</key>
-						<string>text.html.basic</string>
+						<string>text.html.django</string>
 					</dict>
 				</array>
 			</dict>

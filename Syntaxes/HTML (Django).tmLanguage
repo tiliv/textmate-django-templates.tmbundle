@@ -4,6 +4,10 @@
 <dict>
 	<key>changed</key>
 	<dict>
+		<key>fileTypes</key>
+		<array>
+			<string>html</string>
+		</array>
 		<key>injectionSelector</key>
 		<string>text.html.django string.quoted, text.html.django meta.tag.block.*.html, text.html.django source.js.embedded</string>
 		<key>patterns</key>
